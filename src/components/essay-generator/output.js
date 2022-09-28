@@ -90,7 +90,7 @@ export default class LoginPage extends Component {
  
            } else {
              this.setState({
-               EssayData: data["FinalChoiceData"],
+               EssayData: res["data"],
              });
              this.setState({
               Relavance: data["Relavance"],

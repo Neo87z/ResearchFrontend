@@ -379,7 +379,7 @@ export default class LoginPage extends Component {
 
             })
 
-        let BaseURlX = process.env.REACT_APP_APIURL + "/Shean1Last1donefinal122Score1"
+        let BaseURlX = process.env.REACT_APP_APIURL + "/GetScore"
      
             axios.get(BaseURlX)
                 .then(res => {

@@ -74,7 +74,7 @@ export default class LoginPage extends Component {
   }
   async componentDidMount() {
 
-    let BaseURl = process.env.REACT_APP_APIURL + "/GenerateWithSTEK12"
+    let BaseURl = process.env.REACT_APP_APIURL + "/GetEssay"
     let BaseURl2 = process.env.REACT_APP_APIURL + "/GenerateWithoutSTEK"
     console.log(BaseURl)
 
@@ -82,7 +82,7 @@ export default class LoginPage extends Component {
        axios.get(BaseURl, { name: 'John' }, { timeout: 500 })
          .then(res => {
            const data = res.data;
-           console.log(res["data"])
+           console.log(data['FinalChoiceData'])
            console.log(data)
            console.log(res)
            if (res["data"] == "Invalid") {
@@ -90,10 +90,10 @@ export default class LoginPage extends Component {
  
            } else {
              this.setState({
-               EssayData: res["data"],
+               EssayData: data["FinalChoiceData"],
              });
              this.setState({
-              Relavance: data["Relavance"],
+              EssayData2: data["Original"],
             });
             this.setState({
               Response: data["ResponseTime"],
@@ -105,7 +105,8 @@ export default class LoginPage extends Component {
  
              this.ChnageOptimziedLoading()
              this.HandleChange()
- 
+             this.WithoutHandleChange()
+             this.WithoutChnageOptimziedLoading()
              
  
  
@@ -137,8 +138,7 @@ export default class LoginPage extends Component {
  
  
  
-             this.WithoutHandleChange()
-             this.WithoutChnageOptimziedLoading()
+
              setTimeout(() => {
                this.ChangeResultLoader()
                console.log("World!");
